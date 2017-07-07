@@ -9,7 +9,7 @@ public class HoaDon {
 
 	@Id
 	@Column(name = "mahd")
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer mahd;
 
 	@Column(name = "ngaylap")
@@ -105,6 +105,12 @@ public class HoaDon {
 
 	public void setNhanvien(NhanVien nhanvien) {
 		this.nhanvien = nhanvien;
+	}
+
+	@Override
+	public String toString() {
+		return "HoaDon [mahd=" + mahd + ", ngayLap=" + ngayLap + ", soluong=" + soluong + ", vat=" + vat + ", tongtien="
+				+ tongtien + ", sanpham=" + sanpham + ", khachhang=" + khachhang + ", nhanvien=" + nhanvien + "]";
 	}
 
 }

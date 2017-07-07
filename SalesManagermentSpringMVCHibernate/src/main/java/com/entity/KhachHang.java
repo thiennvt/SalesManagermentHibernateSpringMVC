@@ -10,7 +10,7 @@ public class KhachHang {
 
     @Id
     @Column(name = "maKH")
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer maKH;
 
     @Column(name = "fullName")

@@ -9,7 +9,7 @@ import javax.persistence.*;
 public class SanPham {
 	@Id
 	@Column(name = "masp")
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer masp;
 
 	@Column(name = "tensp")

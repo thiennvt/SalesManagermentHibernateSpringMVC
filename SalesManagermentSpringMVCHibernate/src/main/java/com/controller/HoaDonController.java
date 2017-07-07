@@ -24,7 +24,7 @@ public class HoaDonController {
 	HoaDonModel hdModel;
 
 	public HoaDonController() {
-		// TODO Auto-generated constructor stub
+		this.hdModel = new HoaDonModel();
 	}
 
 	// hiển thị trang chào mừng
@@ -41,21 +41,12 @@ public class HoaDonController {
 		return model;
 	}
 	
-//	// hiển thị trang chủ của web
-//		@RequestMapping(value = "/initGetAll", method = RequestMethod.GET)
-//		public ModelAndView initGetAll() {
-//			ModelAndView model = new ModelAndView("homepage");
-//			ArrayList<HoaDon> listHoadon = hdModel.dsHoaDon();
-//			model.addObject("listHoadon", listHoadon);
-//			return model;
-//		}
-
 
 	// hiển thi danh sách hóa đơn lên giao
 	@RequestMapping(value = "initGetAll", method = RequestMethod.GET)
 	public ModelAndView getAll(HttpServletRequest request, HttpServletResponse response) {
 //		ArrayList<HoaDon> listHoadon = hdModel.dsHoaDon();
-		ArrayList<HoaDon>listHoadon = hdModel.listHoaDon();
+		ArrayList<HoaDon>listHoadon = hdModel.listObject();
 		ModelAndView model = new ModelAndView("DanhSachHoaDon");
 		HoaDon hd = new HoaDon();
 		model.getModelMap().put("listHoadon", listHoadon);
@@ -81,19 +72,19 @@ public class HoaDonController {
 		return model;
 	}
 
-	// xử lí tìm kiếm thông tin hóa đơn theo ngày đuợc nhập vào
-	@RequestMapping(value = "xuLiTimKiem", method = RequestMethod.GET)
-	public ModelAndView search(@ModelAttribute("hoadon") HoaDon hoadon, HttpServletRequest request,
-			HttpServletResponse response) {
-		ArrayList<HoaDon> listHD = hdModel.search(hoadon);
-		String typeReport = request.getParameter("type");
-		if (typeReport != null && typeReport.equals("xls")) {
-			return new ModelAndView(new ExportData("application/vnd.ms-excel"), "listHoadon", listHD);
-		}
-		if (typeReport != null && typeReport.equals("xlsx")) {
-			return new ModelAndView(new ExportData("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"),
-					"listHoadon", listHD);
-		}
-		return new ModelAndView("DanhSachHoaDon", "listHoadon", listHD);
-	}
+//	// xử lí tìm kiếm thông tin hóa đơn theo ngày đuợc nhập vào
+//	@RequestMapping(value = "xuLiTimKiem", method = RequestMethod.GET)
+//	public ModelAndView search(@ModelAttribute("hoadon") HoaDon hoadon, HttpServletRequest request,
+//			HttpServletResponse response) {
+//		ArrayList<HoaDon> listHD = hdModel.search(hoadon);
+//		String typeReport = request.getParameter("type");
+//		if (typeReport != null && typeReport.equals("xls")) {
+//			return new ModelAndView(new ExportData("application/vnd.ms-excel"), "listHoadon", listHD);
+//		}
+//		if (typeReport != null && typeReport.equals("xlsx")) {
+//			return new ModelAndView(new ExportData("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"),
+//					"listHoadon", listHD);
+//		}
+//		return new ModelAndView("DanhSachHoaDon", "listHoadon", listHD);
+//	}
 }

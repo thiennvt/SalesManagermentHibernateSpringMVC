@@ -9,7 +9,7 @@ public class NhanVien {
 
 	@Id
 	@Column(name = "manv")
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer manv;
 
 	@Column(name = "hoten")
