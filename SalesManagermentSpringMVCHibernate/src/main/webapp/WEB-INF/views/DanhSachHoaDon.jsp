@@ -22,6 +22,7 @@
 		<div>
 			<spring:url value="initGetAll/?type=xls" var="xlsURL" />
 			<spring:url value="initGetAll/?type=xlsx" var="xlsxURL" />
+			
 			<div class="button_left" style="margin-top: 15px">
 				<div class="dropdown">
 					<button class="btn btn-primary dropdown-toggle" type="button"

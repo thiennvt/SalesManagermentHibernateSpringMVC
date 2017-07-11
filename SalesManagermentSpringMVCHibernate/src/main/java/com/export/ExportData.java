@@ -97,8 +97,7 @@ public class ExportData extends AbstractView {
 			header.getCell(i).setCellStyle(backGroundCellHeader(cellStyle(workbook)));
 		}
 		for (int i = 0; i < cellNum; i++) {
-			String width = getExcelCellString(row.getCell(i));
-			sheet.setColumnWidth(i, PixelUtil.calculateColWidth(width.length() + cong(width.length())));
+			sheet.autoSizeColumn(i);
 		}
 	}
 	// tao du lieu cho cac cell
@@ -147,8 +146,7 @@ public class ExportData extends AbstractView {
 			row.getCell(cellNum).setCellStyle(backGroundCellValue(cellStyle(workbook)));
 			cellNum++;
 
-			String fomula = "E" + (rownum + 1) + "*F" + (rownum + 1) + "-(F" + (rownum + 1) + "*0.1*G" + (rownum + 1)
-					+ ")" + "+H" + (rownum + 1);
+			String fomula = "E" + (rownum + 1) + "*F" + (rownum + 1) + "-(F" + (rownum + 1) + "*0.1*G" + (rownum + 1)+ ")" + "+H" + (rownum + 1);
 			row.createCell(cellNum, CellType.FORMULA).setCellFormula(fomula);
 			row.getCell(cellNum).setCellStyle(backGroundCellValue(cellStyle(workbook)));
 			cellNum++;
@@ -177,10 +175,7 @@ public class ExportData extends AbstractView {
 		}
 
 		for (int i = 0; i < cellNum; i++) {
-			String width = getExcelCellString(row.getCell(i));
-			sheet.setColumnWidth(i, PixelUtil.calculateColWidth(width.length() + cong(width.length())));
-			System.out.println(width + "/ do dai chuoi la: " + width.length());
-			// sheet.autoSizeColumn(i, true);
+			 sheet.autoSizeColumn(i, true);
 
 		}
 
